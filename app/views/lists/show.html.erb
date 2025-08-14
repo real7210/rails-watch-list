@@ -7,9 +7,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= bookmark.movie.title %></h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        <%= link_to "Delete", bookmark_path(bookmark),
-          data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-          class: "btn btn-danger btn-sm" %>
+        <%= link_to "Back to list", list_path(@list), class: "btn btn-secondary" %>
       </div>
     </div>
   <% end %>
