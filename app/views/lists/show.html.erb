@@ -1,16 +1,18 @@
 <div class="container">
   <h1><%= @list.name %></h1>
   <h3>Movies</h3>
-  <% @list.bookmarks.each do |bookmark|%>
-    <div class="card">
-      <%= image_tag bookmark.movie.poster_url, alt: "text" %>
-      <div class="card-body">
-        <h5 class="card-title"><%= bookmark.movie.title %></h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-        <%= link_to "Back to list", list_path(@list), class: "btn btn-secondary" %>
+  <div class="cards">
+    <% @list.bookmarks.each do |bookmark|%>
+      <div class="card">
+        <%= image_tag bookmark.movie.poster_url, alt: "text" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= bookmark.movie.title %></h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+          <%= link_to "Delete", bookmark_path(bookmark), class: "btn btn-secondary", data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}  %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
   <%= link_to lists_path, class: 'btn btn-success mt-2' do %>
     <i class="fa-solid fa-house"></i>
   <% end %>
